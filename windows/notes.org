@@ -1,0 +1,27 @@
+#+TITLE: Notes
+#+AUTHOR: Dileban Karunamoorthy
+#+EMAIL: dileban@gmail.com
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://orgmode.org/worg/style/worg.css" />
+
+* Hyper-V
+
+** Enable Connection Forwarding Between WSL and Hyper-V
+
+To see list of interfaces, their connection state and forwarding status:
+
+#+BEGIN_SRC sh
+
+Get-NetIPInterface | select ifIndex,InterfaceAlias,AddressFamily,ConnectionState,Forwarding | Sort-Object -Property IfIndex | Format-Table
+
+#+END_SRC
+
+
+Update ==vEthernet== state for ==WSL== and =Default Switch==. Change ==Forwarding== state to ==Enabled==.
+
+#+BEGIN_SRC sh
+
+Set-NetIPInterface -ifindex <WSL Index> -Forwarding Enabled and Set-NetIPInterface -ifindex <Default Switch Index> -Forwarding Enabled
+
+#+END_SRC
+
+See WSL issue [#4288](https://github.com/microsoft/WSL/issues/4288) for reference.
