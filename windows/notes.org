@@ -16,7 +16,7 @@ Get-NetIPInterface | select ifIndex,InterfaceAlias,AddressFamily,ConnectionState
 #+END_SRC
 
 
-Update ==vEthernet== state for ==WSL== and =Default Switch==. Change ==Forwarding== state to ==Enabled==.
+To update =vEthernet= state for =WSL= and =Default Switch= (run Powershell as /Administrator/):
 
 #+BEGIN_SRC sh
 
@@ -24,4 +24,6 @@ Set-NetIPInterface -ifindex <WSL Index> -Forwarding Enabled and Set-NetIPInterfa
 
 #+END_SRC
 
-See WSL issue [#4288](https://github.com/microsoft/WSL/issues/4288) for reference.
+See WSL [[https://github.com/microsoft/WSL/issues/4288][#4288]] for reference.
+
+
